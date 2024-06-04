@@ -1,0 +1,4358 @@
+2024-02-17 16:35:38 [INFO] Question: create a pie chart for the data
+
+2024-02-17 16:35:38 [INFO] Running PandasAI with openai LLM...
+2024-02-17 16:35:38 [INFO] Prompt ID: a2522b95-da83-4daa-92d3-33e280854875
+2024-02-17 16:35:38 [INFO] Executing Step 0: CacheLookup
+2024-02-17 16:35:38 [INFO] Executing Step 1: PromptGeneration
+2024-02-17 16:35:38 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for the data
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-17 16:35:38 [INFO] Executing Step 2: CodeGenerator
+2024-02-17 16:35:42 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 16:35:42 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+data = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(data, labels=data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+            ```
+            
+2024-02-17 16:35:42 [INFO] Executing Step 3: CachePopulation
+2024-02-17 16:35:42 [INFO] Executing Step 4: CodeExecution
+2024-02-17 16:35:42 [INFO] 
+Code running:
+```
+data = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(data, labels=data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+result = {'type': 'plot', 'value': plt}
+        ```
+2024-02-17 16:35:42 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-02-17 16:35:42 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+. Retrying
+2024-02-17 16:35:42 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for the data
+
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+data = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(data, labels=data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+
+
+Fix the python code above and return the new python code:
+2024-02-17 16:35:44 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 16:35:44 [INFO] 
+Code running:
+```
+data = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(data, labels=data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+        ```
+2024-02-17 16:35:56 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-02-17 16:35:56 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 216, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+. Retrying
+2024-02-17 16:35:56 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for the data
+
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+data = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(data, labels=data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 216, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-02-17 16:35:58 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 16:35:58 [INFO] 
+Code running:
+```
+data = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(data, labels=data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+        ```
+2024-02-17 16:36:16 [ERROR] Pipeline failed on step 4: No result returned
+2024-02-17 16:36:59 [INFO] Question: how many species are there and what are those?
+
+
+2024-02-17 16:36:59 [INFO] Running PandasAI with openai LLM...
+2024-02-17 16:36:59 [INFO] Prompt ID: 2a21cada-be5c-411d-9b33-caa3d17633fe
+2024-02-17 16:36:59 [INFO] Executing Step 0: CacheLookup
+2024-02-17 16:36:59 [INFO] Executing Step 1: PromptGeneration
+2024-02-17 16:36:59 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: how many species are there and what are those?
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-17 16:36:59 [INFO] Executing Step 2: CodeGenerator
+2024-02-17 16:37:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 16:37:01 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+species_count = len(set(dfs[0]['Species']))
+species_list = list(set(dfs[0]['Species']))
+
+# Declare result var
+result = {
+    "type": "string",
+    "value": f"There are {species_count} species in the dataset and those are: {', '.join(species_list)}."
+}
+            ```
+            
+2024-02-17 16:37:01 [INFO] Executing Step 3: CachePopulation
+2024-02-17 16:37:01 [INFO] Executing Step 4: CodeExecution
+2024-02-17 16:37:01 [INFO] 
+Code running:
+```
+species_count = len(set(dfs[0]['Species']))
+species_list = list(set(dfs[0]['Species']))
+result = {'type': 'string', 'value': f"There are {species_count} species in the dataset and those are: {', '.join(species_list)}."}
+        ```
+2024-02-17 16:37:01 [INFO] Executing Step 5: ResultValidation
+2024-02-17 16:37:01 [INFO] Answer: {'type': 'string', 'value': 'There are 3 species in the dataset and those are: Iris-setosa, Iris-virginica, Iris-versicolor.'}
+2024-02-17 16:37:01 [INFO] Executed in: 2.1672167778015137s
+2024-02-17 16:37:01 [INFO] Executing Step 6: ResultParsing
+2024-02-17 16:39:34 [INFO] Question: mean of SepalLengthCm
+2024-02-17 16:39:34 [INFO] Running PandasAI with openai LLM...
+2024-02-17 16:39:34 [INFO] Prompt ID: ec9063e1-ff7a-4d6f-aedb-b80ebfed2238
+2024-02-17 16:39:34 [INFO] Executing Step 0: CacheLookup
+2024-02-17 16:39:34 [INFO] Executing Step 1: PromptGeneration
+2024-02-17 16:39:34 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: mean of SepalLengthCm
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-17 16:39:34 [INFO] Executing Step 2: CodeGenerator
+2024-02-17 16:39:36 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 16:39:36 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+mean_sepal_length = dfs[0]['SepalLengthCm'].mean()
+
+# Declare result var
+result = { "type": "number", "value": mean_sepal_length }
+            ```
+            
+2024-02-17 16:39:36 [INFO] Executing Step 3: CachePopulation
+2024-02-17 16:39:36 [INFO] Executing Step 4: CodeExecution
+2024-02-17 16:39:36 [INFO] 
+Code running:
+```
+mean_sepal_length = dfs[0]['SepalLengthCm'].mean()
+result = {'type': 'number', 'value': mean_sepal_length}
+        ```
+2024-02-17 16:39:36 [INFO] Executing Step 5: ResultValidation
+2024-02-17 16:39:36 [INFO] Answer: {'type': 'number', 'value': 5.843333333333334}
+2024-02-17 16:39:36 [INFO] Executed in: 2.1192219257354736s
+2024-02-17 16:39:36 [INFO] Executing Step 6: ResultParsing
+2024-02-17 17:19:33 [INFO] Question: create a pie chart for the data?
+
+2024-02-17 17:19:33 [INFO] Running PandasAI with openai LLM...
+2024-02-17 17:19:33 [INFO] Prompt ID: 622312ee-a88f-4ea4-b3b5-652d5bfdc7df
+2024-02-17 17:19:33 [INFO] Executing Step 0: CacheLookup
+2024-02-17 17:19:33 [INFO] Executing Step 1: PromptGeneration
+2024-02-17 17:19:33 [INFO] Using prompt: <dataframe>
+dfs[0]:169x4
+Duration,Pulse,Maxpulse,Calories
+60,103,135,340.0
+60,110,130,409.1
+60,117,145,479.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for the data?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-17 17:19:33 [INFO] Executing Step 2: CodeGenerator
+2024-02-17 17:19:35 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 17:19:35 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(df['Calories'], labels=df.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Calories')
+
+# Display the plot
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart.png"}
+            ```
+            
+2024-02-17 17:19:35 [INFO] Executing Step 3: CachePopulation
+2024-02-17 17:19:35 [INFO] Executing Step 4: CodeExecution
+2024-02-17 17:19:35 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-02-17 17:19:35 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(8, 8))
+plt.pie(df['Calories'], labels=df.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Calories')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-02-17 17:19:35 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-02-17 17:19:35 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 3, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\pyplot.py", line 3558, in pie
+    return gca().pie(
+           ^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\__init__.py", line 1478, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\axes\_axes.py", line 3276, in pie
+    w = mpatches.Wedge((x, y), radius, 360. * min(theta1, theta2),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\patches.py", line 1198, in __init__
+    self._recompute_path()
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\patches.py", line 1210, in _recompute_path
+    arc = Path.arc(theta1, theta2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\path.py", line 958, in arc
+    n = int(2 ** np.ceil((eta2 - eta1) / halfpi))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: cannot convert float NaN to integer
+. Retrying
+2024-02-17 17:19:35 [INFO] Using prompt: <dataframe>
+dfs[0]:169x4
+Duration,Pulse,Maxpulse,Calories
+60,103,135,340.0
+60,110,130,409.1
+60,117,145,479.0
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for the data?
+
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(df['Calories'], labels=df.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Calories')
+
+# Display the plot
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart.png"}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 3, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\pyplot.py", line 3558, in pie
+    return gca().pie(
+           ^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\__init__.py", line 1478, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\axes\_axes.py", line 3276, in pie
+    w = mpatches.Wedge((x, y), radius, 360. * min(theta1, theta2),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\patches.py", line 1198, in __init__
+    self._recompute_path()
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\patches.py", line 1210, in _recompute_path
+    arc = Path.arc(theta1, theta2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\matplotlib\path.py", line 958, in arc
+    n = int(2 ** np.ceil((eta2 - eta1) / halfpi))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: cannot convert float NaN to integer
+
+
+Fix the python code above and return the new python code:
+2024-02-17 17:19:48 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 17:19:48 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-02-17 17:19:48 [INFO] 
+Code running:
+```
+df = dfs[0].dropna()
+plt.figure(figsize=(8, 8))
+plt.pie(df['Calories'], labels=df.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Calories')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-02-17 17:19:48 [WARNING] posx and posy should be finite values
+2024-02-17 17:19:48 [WARNING] posx and posy should be finite values
+2024-02-17 17:19:49 [WARNING] posx and posy should be finite values
+2024-02-17 17:19:49 [WARNING] posx and posy should be finite values
+2024-02-17 17:19:56 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-02-17 17:19:56 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'
+. Retrying
+2024-02-17 17:19:56 [INFO] Using prompt: <dataframe>
+dfs[0]:169x4
+Duration,Pulse,Maxpulse,Calories
+60,103,135,340.0
+60,110,130,409.1
+60,117,145,479.0
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for the data?
+
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(df['Calories'], labels=df.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Calories')
+
+# Display the plot
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart.png"}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'
+
+
+Fix the python code above and return the new python code:
+2024-02-17 17:19:59 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 17:19:59 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-02-17 17:19:59 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(8, 8))
+plt.pie(df['Calories'], labels=df.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Calories')
+plt.savefig('C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-02-17 17:20:00 [ERROR] Pipeline failed on step 4: cannot convert float NaN to integer
+2024-02-17 19:17:00 [INFO] Question: mean of sepallengthCm?
+
+2024-02-17 19:17:00 [INFO] Running PandasAI with openai LLM...
+2024-02-17 19:17:00 [INFO] Prompt ID: 1223933c-9edf-405c-8330-7ad332c75ad7
+2024-02-17 19:17:00 [INFO] Executing Step 0: CacheLookup
+2024-02-17 19:17:00 [INFO] Executing Step 1: PromptGeneration
+2024-02-17 19:17:00 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: mean of sepallengthCm?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-17 19:17:00 [INFO] Executing Step 2: CodeGenerator
+2024-02-17 19:17:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 19:17:01 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+mean_sepallength = dfs[0]['SepalLengthCm'].mean()
+
+# Declare result var
+result = { "type": "number", "value": mean_sepallength }
+            ```
+            
+2024-02-17 19:17:01 [INFO] Executing Step 3: CachePopulation
+2024-02-17 19:17:01 [INFO] Executing Step 4: CodeExecution
+2024-02-17 19:17:01 [INFO] 
+Code running:
+```
+mean_sepallength = dfs[0]['SepalLengthCm'].mean()
+result = {'type': 'number', 'value': mean_sepallength}
+        ```
+2024-02-17 19:17:01 [INFO] Executing Step 5: ResultValidation
+2024-02-17 19:17:01 [INFO] Answer: {'type': 'number', 'value': 5.843333333333334}
+2024-02-17 19:17:01 [INFO] Executed in: 1.6759192943572998s
+2024-02-17 19:17:01 [INFO] Executing Step 6: ResultParsing
+2024-02-17 19:17:40 [INFO] Question: create a pie chart for the species
+
+
+2024-02-17 19:17:40 [INFO] Running PandasAI with openai LLM...
+2024-02-17 19:17:40 [INFO] Prompt ID: 6a6c1132-228d-4625-aeed-119b735e9345
+2024-02-17 19:17:40 [INFO] Executing Step 0: CacheLookup
+2024-02-17 19:17:40 [INFO] Executing Step 1: PromptGeneration
+2024-02-17 19:17:40 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for the species
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-17 19:17:40 [INFO] Executing Step 2: CodeGenerator
+2024-02-17 19:17:43 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 19:17:43 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart for the species
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+            ```
+            
+2024-02-17 19:17:43 [INFO] Executing Step 3: CachePopulation
+2024-02-17 19:17:43 [INFO] Executing Step 4: CodeExecution
+2024-02-17 19:17:43 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-02-17 19:17:43 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-02-17 19:17:55 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-02-17 19:17:55 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'
+. Retrying
+2024-02-17 19:17:55 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for the species
+
+
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart for the species
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'
+
+
+Fix the python code above and return the new python code:
+2024-02-17 19:17:58 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-17 19:17:58 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-02-17 19:17:58 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.savefig('C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-02-17 19:18:01 [INFO] Executing Step 5: ResultValidation
+2024-02-17 19:18:01 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-02-17 19:18:01 [INFO] Executed in: 20.18214988708496s
+2024-02-17 19:18:01 [INFO] Executing Step 6: ResultParsing
+2024-02-18 18:25:44 [INFO] Question: mean of sepallengthCm
+2024-02-18 18:25:45 [INFO] Running PandasAI with openai LLM...
+2024-02-18 18:25:45 [INFO] Prompt ID: ea58ffb1-ded0-411e-9afa-2370e2c86a6e
+2024-02-18 18:25:45 [INFO] Executing Step 0: CacheLookup
+2024-02-18 18:25:45 [INFO] Executing Step 1: PromptGeneration
+2024-02-18 18:25:45 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: mean of sepallengthCm
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-18 18:25:45 [INFO] Executing Step 2: CodeGenerator
+2024-02-18 18:25:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-18 18:25:47 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+mean_sepallength = dfs[0]['SepalLengthCm'].mean()
+
+# Declare result var
+result = { "type": "number", "value": mean_sepallength }
+            ```
+            
+2024-02-18 18:25:47 [INFO] Executing Step 3: CachePopulation
+2024-02-18 18:25:47 [INFO] Executing Step 4: CodeExecution
+2024-02-18 18:25:47 [INFO] 
+Code running:
+```
+mean_sepallength = dfs[0]['SepalLengthCm'].mean()
+result = {'type': 'number', 'value': mean_sepallength}
+        ```
+2024-02-18 18:25:47 [INFO] Executing Step 5: ResultValidation
+2024-02-18 18:25:47 [INFO] Answer: {'type': 'number', 'value': 5.843333333333334}
+2024-02-18 18:25:47 [INFO] Executed in: 2.1694371700286865s
+2024-02-18 18:25:47 [INFO] Executing Step 6: ResultParsing
+2024-02-18 18:25:57 [INFO] Question: median of sepallengthCm
+2024-02-18 18:25:57 [INFO] Running PandasAI with openai LLM...
+2024-02-18 18:25:57 [INFO] Prompt ID: 5e40ced3-febf-4b85-adf4-0ff3f3729a83
+2024-02-18 18:25:57 [INFO] Executing Step 0: CacheLookup
+2024-02-18 18:25:57 [INFO] Executing Step 1: PromptGeneration
+2024-02-18 18:25:57 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: median of sepallengthCm
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-18 18:25:57 [INFO] Executing Step 2: CodeGenerator
+2024-02-18 18:25:59 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-18 18:25:59 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+median_sepallength = dfs[0]['SepalLengthCm'].median()
+
+# Declare result var
+result = { "type": "number", "value": median_sepallength }
+            ```
+            
+2024-02-18 18:25:59 [INFO] Executing Step 3: CachePopulation
+2024-02-18 18:25:59 [INFO] Executing Step 4: CodeExecution
+2024-02-18 18:25:59 [INFO] 
+Code running:
+```
+median_sepallength = dfs[0]['SepalLengthCm'].median()
+result = {'type': 'number', 'value': median_sepallength}
+        ```
+2024-02-18 18:25:59 [INFO] Executing Step 5: ResultValidation
+2024-02-18 18:25:59 [INFO] Answer: {'type': 'number', 'value': 5.8}
+2024-02-18 18:25:59 [INFO] Executed in: 2.2271339893341064s
+2024-02-18 18:25:59 [INFO] Executing Step 6: ResultParsing
+2024-02-18 18:26:20 [INFO] Question: create a pie chart for the species
+2024-02-18 18:26:20 [INFO] Running PandasAI with openai LLM...
+2024-02-18 18:26:20 [INFO] Prompt ID: 61db6a1f-32e9-42e2-aee1-373dcb2e40cd
+2024-02-18 18:26:20 [INFO] Executing Step 0: CacheLookup
+2024-02-18 18:26:20 [INFO] Executing Step 1: PromptGeneration
+2024-02-18 18:26:20 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for the species
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-18 18:26:20 [INFO] Executing Step 2: CodeGenerator
+2024-02-18 18:26:22 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-18 18:26:22 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart for the species
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+            ```
+            
+2024-02-18 18:26:22 [INFO] Executing Step 3: CachePopulation
+2024-02-18 18:26:22 [INFO] Executing Step 4: CodeExecution
+2024-02-18 18:26:22 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-02-18 18:26:22 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-02-18 18:26:29 [INFO] Executing Step 5: ResultValidation
+2024-02-18 18:26:29 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-02-18 18:26:29 [INFO] Executed in: 9.603037357330322s
+2024-02-18 18:26:29 [INFO] Executing Step 6: ResultParsing
+2024-02-18 18:26:37 [INFO] Question: create a bar chart for the species
+2024-02-18 18:26:37 [INFO] Running PandasAI with openai LLM...
+2024-02-18 18:26:37 [INFO] Prompt ID: b0be8e67-366a-40ee-99ed-268d7be4bacb
+2024-02-18 18:26:37 [INFO] Executing Step 0: CacheLookup
+2024-02-18 18:26:37 [INFO] Executing Step 1: PromptGeneration
+2024-02-18 18:26:37 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a bar chart for the species
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-02-18 18:26:37 [INFO] Executing Step 2: CodeGenerator
+2024-02-18 18:26:40 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-18 18:26:40 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+species_counts = df['Species'].value_counts()
+
+# Create bar chart
+plt.figure(figsize=(10, 6))
+species_counts.plot(kind='bar', color='skyblue')
+plt.title('Count of Each Species')
+plt.xlabel('Species')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.grid(axis='y', linestyle='--', linewidth=0.5)
+plt.tight_layout()
+
+# Save the plot as a PNG file
+plt.savefig('species_bar_chart.png')
+
+# Declare result var
+result = { "type": "plot", "value": "species_bar_chart.png" }
+            ```
+            
+2024-02-18 18:26:40 [INFO] Executing Step 3: CachePopulation
+2024-02-18 18:26:40 [INFO] Executing Step 4: CodeExecution
+2024-02-18 18:26:40 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-02-18 18:26:40 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_counts = df['Species'].value_counts()
+plt.figure(figsize=(10, 6))
+species_counts.plot(kind='bar', color='skyblue')
+plt.title('Count of Each Species')
+plt.xlabel('Species')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.grid(axis='y', linestyle='--', linewidth=0.5)
+plt.tight_layout()
+plt.savefig('C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-02-18 18:26:40 [INFO] Executing Step 5: ResultValidation
+2024-02-18 18:26:40 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-02-18 18:26:40 [INFO] Executed in: 2.8633573055267334s
+2024-02-18 18:26:40 [INFO] Executing Step 6: ResultParsing
+2024-02-18 18:28:32 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-02-18 18:28:33 [INFO] Loading faiss with AVX2 support.
+2024-02-18 18:28:33 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2024-02-18 18:28:33 [INFO] Loading faiss.
+2024-02-18 18:28:33 [INFO] Successfully loaded faiss.
+2024-03-05 22:49:45 [INFO] Question: i need the fc column data
+
+2024-03-05 22:49:45 [INFO] Running PandasAI with openai LLM...
+2024-03-05 22:49:45 [INFO] Prompt ID: 87b74bae-30f9-462f-8114-28e843b98e03
+2024-03-05 22:49:45 [INFO] Executing Step 0: CacheLookup
+2024-03-05 22:49:45 [INFO] Executing Step 1: PromptGeneration
+2024-03-05 22:49:45 [INFO] Using prompt: <dataframe>
+dfs[0]:75x23
+"SID, Karakolha ",Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Unnamed: 8,Unnamed: 9,Unnamed: 10,Unnamed: 11,Unnamed: 12,Unnamed: 13,Unnamed: 14,Unnamed: 15,Unnamed: 16,Unnamed: 17,Unnamed: 18,Unnamed: 19,Unnamed: 20,Unnamed: 21,Unnamed: 22
+RUSSIAN(RB1)Coal -(BY ...,,,,,,,RUSSIAN(RB1)Coal -(BY ...,,,,,,,,,,,,,,,
+Period -01.01.2023 to ...,,,,,,,,,,,,,,,,,,,,,,
+Imported Coal Analysis...,,,,,,,,,,,,,,,,,,,,,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: i need the fc column data
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-05 22:49:45 [INFO] Executing Step 2: CodeGenerator
+2024-03-05 22:49:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 22:49:47 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+fc_column = dfs[0]['Unnamed: 6']
+
+# Declare result var
+result = {"type": "dataframe", "value": fc_column}
+            ```
+            
+2024-03-05 22:49:47 [INFO] Executing Step 3: CachePopulation
+2024-03-05 22:49:47 [INFO] Executing Step 4: CodeExecution
+2024-03-05 22:49:47 [INFO] 
+Code running:
+```
+fc_column = dfs[0]['Unnamed: 6']
+result = {'type': 'dataframe', 'value': fc_column}
+        ```
+2024-03-05 22:49:47 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-03-05 22:49:47 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 93, in convert_dataframe_to_dict
+    return {"headers": json_data["columns"], "rows": json_data["data"]}
+                       ~~~~~~~~~^^^^^^^^^^^
+KeyError: 'columns'
+. Retrying
+2024-03-05 22:49:47 [INFO] Using prompt: <dataframe>
+dfs[0]:75x23
+"SID, Karakolha ",Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Unnamed: 8,Unnamed: 9,Unnamed: 10,Unnamed: 11,Unnamed: 12,Unnamed: 13,Unnamed: 14,Unnamed: 15,Unnamed: 16,Unnamed: 17,Unnamed: 18,Unnamed: 19,Unnamed: 20,Unnamed: 21,Unnamed: 22
+RUSSIAN(RB1)Coal -(BY ...,,,,,,,RUSSIAN(RB1)Coal -(BY ...,,,,,,,,,,,,,,,
+Period -01.01.2023 to ...,,,,,,,,,,,,,,,,,,,,,,
+Imported Coal Analysis...,,,,,,,,,,,,,,,,,,,,,,
+</dataframe>
+
+The user asked the following question:
+Q: i need the fc column data
+
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+fc_column = dfs[0]['Unnamed: 6']
+
+# Declare result var
+result = {"type": "dataframe", "value": fc_column}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 93, in convert_dataframe_to_dict
+    return {"headers": json_data["columns"], "rows": json_data["data"]}
+                       ~~~~~~~~~^^^^^^^^^^^
+KeyError: 'columns'
+
+
+Fix the python code above and return the new python code:
+2024-03-05 22:49:49 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 22:49:49 [INFO] 
+Code running:
+```
+fc_column = dfs[0]['Unnamed: 6']
+result = {'type': 'dataframe', 'value': fc_column.to_frame()}
+result
+        ```
+2024-03-05 22:49:49 [INFO] Executing Step 5: ResultValidation
+2024-03-05 22:49:49 [INFO] Answer: {'type': 'dataframe', 'value':     Unnamed: 6
+0          NaN
+1          NaN
+2          NaN
+3          NaN
+4          NaN
+..         ...
+70         NaN
+71         NaN
+72         NaN
+73         NaN
+74         NaN
+
+[75 rows x 1 columns]}
+2024-03-05 22:49:49 [INFO] Executed in: 4.150267601013184s
+2024-03-05 22:49:49 [INFO] Executing Step 6: ResultParsing
+2024-03-05 23:03:22 [INFO] Question: create a bar chart for series_title_2
+2024-03-05 23:03:22 [INFO] Running PandasAI with openai LLM...
+2024-03-05 23:03:22 [INFO] Prompt ID: e6cc263a-f9be-4a63-a6da-222692a22465
+2024-03-05 23:03:22 [INFO] Executing Step 0: CacheLookup
+2024-03-05 23:03:22 [INFO] Executing Step 1: PromptGeneration
+2024-03-05 23:03:22 [INFO] Using prompt: <dataframe>
+dfs[0]:22189x14
+Series_reference,Period,Data_value,Suppressed,STATUS,UNITS,Magnitude,Subject,Group,Series_title_1,Series_title_2,Series_title_3,Series_title_4,Series_title_5
+BDCQ.SEA1AA,2011.09,78324.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.12,85850.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.06,80078.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a bar chart for series_title_2
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-05 23:03:22 [INFO] Executing Step 2: CodeGenerator
+2024-03-05 23:03:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 23:03:25 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+plt.figure(figsize=(12, 6))
+df['Series_title_2'].value_counts().plot(kind='bar')
+plt.title('Bar Chart for Series_title_2')
+plt.xlabel('Series_title_2')
+plt.ylabel('Count')
+
+# Declare result var
+result = {"type": "plot", "value": plt}
+            ```
+            
+2024-03-05 23:03:25 [INFO] Executing Step 3: CachePopulation
+2024-03-05 23:03:25 [INFO] Executing Step 4: CodeExecution
+2024-03-05 23:03:25 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(12, 6))
+df['Series_title_2'].value_counts().plot(kind='bar')
+plt.title('Bar Chart for Series_title_2')
+plt.xlabel('Series_title_2')
+plt.ylabel('Count')
+result = {'type': 'plot', 'value': plt}
+        ```
+2024-03-05 23:03:26 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-03-05 23:03:26 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+. Retrying
+2024-03-05 23:03:26 [INFO] Using prompt: <dataframe>
+dfs[0]:22189x14
+Series_reference,Period,Data_value,Suppressed,STATUS,UNITS,Magnitude,Subject,Group,Series_title_1,Series_title_2,Series_title_3,Series_title_4,Series_title_5
+BDCQ.SEA1AA,2011.09,78324.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.12,85850.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.06,80078.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+</dataframe>
+
+The user asked the following question:
+Q: create a bar chart for series_title_2
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+plt.figure(figsize=(12, 6))
+df['Series_title_2'].value_counts().plot(kind='bar')
+plt.title('Bar Chart for Series_title_2')
+plt.xlabel('Series_title_2')
+plt.ylabel('Count')
+
+# Declare result var
+result = {"type": "plot", "value": plt}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+
+
+Fix the python code above and return the new python code:
+2024-03-05 23:03:28 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 23:03:28 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(12, 6))
+df['Series_title_2'].value_counts().plot(kind='bar')
+plt.title('Bar Chart for Series_title_2')
+plt.xlabel('Series_title_2')
+plt.ylabel('Count')
+plt.show()
+        ```
+2024-03-05 23:03:54 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-03-05 23:03:54 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 216, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+. Retrying
+2024-03-05 23:03:54 [INFO] Using prompt: <dataframe>
+dfs[0]:22189x14
+Series_reference,Period,Data_value,Suppressed,STATUS,UNITS,Magnitude,Subject,Group,Series_title_1,Series_title_2,Series_title_3,Series_title_4,Series_title_5
+BDCQ.SEA1AA,2011.09,78324.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.12,85850.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.06,80078.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+</dataframe>
+
+The user asked the following question:
+Q: create a bar chart for series_title_2
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+plt.figure(figsize=(12, 6))
+df['Series_title_2'].value_counts().plot(kind='bar')
+plt.title('Bar Chart for Series_title_2')
+plt.xlabel('Series_title_2')
+plt.ylabel('Count')
+
+# Declare result var
+result = {"type": "plot", "value": plt}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 216, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-03-05 23:03:54 [INFO] Question: create a pie chart for series_title_2
+2024-03-05 23:03:54 [INFO] Running PandasAI with openai LLM...
+2024-03-05 23:03:54 [INFO] Prompt ID: 05c0251d-3b5b-4404-8314-1bbf2b668834
+2024-03-05 23:03:54 [INFO] Executing Step 0: CacheLookup
+2024-03-05 23:03:54 [INFO] Executing Step 1: PromptGeneration
+2024-03-05 23:03:54 [INFO] Using prompt: <dataframe>
+dfs[0]:22189x14
+Series_reference,Period,Data_value,Suppressed,STATUS,UNITS,Magnitude,Subject,Group,Series_title_1,Series_title_2,Series_title_3,Series_title_4,Series_title_5
+BDCQ.SEA1AA,2011.09,78324.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.12,85850.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.06,80078.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for series_title_2
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-05 23:03:54 [INFO] Executing Step 2: CodeGenerator
+2024-03-05 23:03:56 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 23:03:56 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(12, 6))
+df['Series_title_2'].value_counts().plot(kind='bar')
+plt.title('Bar Chart for Series_title_2')
+plt.xlabel('Series_title_2')
+plt.ylabel('Count')
+plt.show()
+result = {'type': 'plot', 'value': plt}
+        ```
+2024-03-05 23:03:58 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 23:03:58 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Group by Series_title_2 and sum the Data_value
+grouped_data = df.groupby('Series_title_2')['Data_value'].sum()
+
+# Create a pie chart
+plt.figure(figsize=(10, 6))
+plt.pie(grouped_data, labels=grouped_data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Data Values by Series_title_2')
+
+# Display the pie chart
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart.png"}
+            ```
+            
+2024-03-05 23:03:58 [INFO] Executing Step 3: CachePopulation
+2024-03-05 23:03:58 [INFO] Executing Step 4: CodeExecution
+2024-03-05 23:03:58 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-05 23:03:59 [INFO] 
+Code running:
+```
+df = dfs[0]
+grouped_data = df.groupby('Series_title_2')['Data_value'].sum()
+plt.figure(figsize=(10, 6))
+plt.pie(grouped_data, labels=grouped_data.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Data Values by Series_title_2')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-05 23:04:00 [INFO] Executing Step 5: ResultValidation
+2024-03-05 23:04:00 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-03-05 23:04:00 [INFO] Executed in: 5.637630462646484s
+2024-03-05 23:04:00 [INFO] Executing Step 6: ResultParsing
+2024-03-05 23:05:28 [INFO] Question: create a pie chart for STATUS
+2024-03-05 23:05:28 [INFO] Running PandasAI with openai LLM...
+2024-03-05 23:05:28 [INFO] Prompt ID: ce223113-5b2e-41d4-a20f-47de8c81ce3d
+2024-03-05 23:05:28 [INFO] Executing Step 0: CacheLookup
+2024-03-05 23:05:28 [INFO] Executing Step 1: PromptGeneration
+2024-03-05 23:05:28 [INFO] Using prompt: <dataframe>
+dfs[0]:22189x14
+Series_reference,Period,Data_value,Suppressed,STATUS,UNITS,Magnitude,Subject,Group,Series_title_1,Series_title_2,Series_title_3,Series_title_4,Series_title_5
+BDCQ.SEA1AA,2011.06,80078.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.12,85850.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.09,78324.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for STATUS
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-05 23:05:28 [INFO] Executing Step 2: CodeGenerator
+2024-03-05 23:05:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 23:05:31 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart for the 'STATUS' column
+status_counts = df['STATUS'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(status_counts, labels=status_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of STATUS')
+
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart.png"}
+            ```
+            
+2024-03-05 23:05:31 [INFO] Executing Step 3: CachePopulation
+2024-03-05 23:05:32 [INFO] Executing Step 4: CodeExecution
+2024-03-05 23:05:32 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-05 23:05:32 [INFO] 
+Code running:
+```
+df = dfs[0]
+status_counts = df['STATUS'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(status_counts, labels=status_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of STATUS')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-05 23:06:35 [INFO] Executing Step 5: ResultValidation
+2024-03-05 23:06:35 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-03-05 23:06:35 [INFO] Executed in: 67.4227364063263s
+2024-03-05 23:06:35 [INFO] Executing Step 6: ResultParsing
+2024-03-05 23:07:04 [INFO] Question: sum of data_value
+2024-03-05 23:07:04 [INFO] Running PandasAI with openai LLM...
+2024-03-05 23:07:04 [INFO] Prompt ID: 296a699d-2f38-42a1-a77e-87df4ae62bf0
+2024-03-05 23:07:04 [INFO] Executing Step 0: CacheLookup
+2024-03-05 23:07:04 [INFO] Executing Step 1: PromptGeneration
+2024-03-05 23:07:04 [INFO] Using prompt: <dataframe>
+dfs[0]:22189x14
+Series_reference,Period,Data_value,Suppressed,STATUS,UNITS,Magnitude,Subject,Group,Series_title_1,Series_title_2,Series_title_3,Series_title_4,Series_title_5
+BDCQ.SEA1AA,2011.06,80078.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.09,78324.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+BDCQ.SEA1AA,2011.12,85850.0,,F,Number,0,Business Data Collecti...,Industry by employment...,Filled jobs,"Agriculture, Forestry ...",Actual,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: sum of data_value
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-05 23:07:04 [INFO] Executing Step 2: CodeGenerator
+2024-03-05 23:07:06 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-05 23:07:06 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+total_sum = sum([df['Data_value'].sum() for df in dfs])
+
+# Declare result var
+result = {"type": "number", "value": total_sum}
+            ```
+            
+2024-03-05 23:07:06 [INFO] Executing Step 3: CachePopulation
+2024-03-05 23:07:06 [INFO] Executing Step 4: CodeExecution
+2024-03-05 23:07:06 [INFO] 
+Code running:
+```
+total_sum = sum([df['Data_value'].sum() for df in dfs])
+result = {'type': 'number', 'value': total_sum}
+        ```
+2024-03-05 23:07:06 [INFO] Executing Step 5: ResultValidation
+2024-03-05 23:07:06 [INFO] Answer: {'type': 'number', 'value': 1397590206.197836}
+2024-03-05 23:07:06 [INFO] Executed in: 1.8941833972930908s
+2024-03-05 23:07:06 [INFO] Executing Step 6: ResultParsing
+2024-03-17 17:26:59 [INFO] Question: Show me the summary statistics for the 'petal width' column.
+2024-03-17 17:26:59 [INFO] Running PandasAI with openai LLM...
+2024-03-17 17:26:59 [INFO] Prompt ID: db5b3f0e-fdfc-4f48-a96f-36fb70cf1e4a
+2024-03-17 17:26:59 [INFO] Executing Step 0: CacheLookup
+2024-03-17 17:26:59 [INFO] Executing Step 1: PromptGeneration
+2024-03-17 17:26:59 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: Show me the summary statistics for the 'petal width' column.
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-17 17:26:59 [INFO] Executing Step 2: CodeGenerator
+2024-03-17 17:27:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:27:01 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+summary_statistics = dfs[0]['PetalWidthCm'].describe()
+
+# Declare result var
+result = { "type": "dataframe", "value": summary_statistics }
+            ```
+            
+2024-03-17 17:27:01 [INFO] Executing Step 3: CachePopulation
+2024-03-17 17:27:01 [INFO] Executing Step 4: CodeExecution
+2024-03-17 17:27:01 [INFO] 
+Code running:
+```
+summary_statistics = dfs[0]['PetalWidthCm'].describe()
+result = {'type': 'dataframe', 'value': summary_statistics}
+        ```
+2024-03-17 17:27:01 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-03-17 17:27:01 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 93, in convert_dataframe_to_dict
+    return {"headers": json_data["columns"], "rows": json_data["data"]}
+                       ~~~~~~~~~^^^^^^^^^^^
+KeyError: 'columns'
+. Retrying
+2024-03-17 17:27:01 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: Show me the summary statistics for the 'petal width' column.
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+summary_statistics = dfs[0]['PetalWidthCm'].describe()
+
+# Declare result var
+result = { "type": "dataframe", "value": summary_statistics }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 93, in convert_dataframe_to_dict
+    return {"headers": json_data["columns"], "rows": json_data["data"]}
+                       ~~~~~~~~~^^^^^^^^^^^
+KeyError: 'columns'
+
+
+Fix the python code above and return the new python code:
+2024-03-17 17:27:03 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:27:03 [INFO] 
+Code running:
+```
+summary_statistics = dfs[0]['PetalWidthCm'].describe().reset_index()
+result = {'type': 'dataframe', 'value': summary_statistics}
+        ```
+2024-03-17 17:27:03 [INFO] Executing Step 5: ResultValidation
+2024-03-17 17:27:03 [INFO] Answer: {'type': 'dataframe', 'value':    index  PetalWidthCm
+0  count    150.000000
+1   mean      1.198667
+2    std      0.763161
+3    min      0.100000
+4    25%      0.300000
+5    50%      1.300000
+6    75%      1.800000
+7    max      2.500000}
+2024-03-17 17:27:03 [INFO] Executed in: 3.84358549118042s
+2024-03-17 17:27:03 [INFO] Executing Step 6: ResultParsing
+2024-03-17 17:33:12 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-03-17 17:33:13 [INFO] Loading faiss with AVX2 support.
+2024-03-17 17:33:13 [INFO] Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2024-03-17 17:33:13 [INFO] Loading faiss.
+2024-03-17 17:33:14 [INFO] Successfully loaded faiss.
+2024-03-17 17:33:44 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-03-17 17:33:46 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:38:33 [INFO] Question: create a pie chart for all the columns together 
+2024-03-17 17:38:33 [INFO] Running PandasAI with openai LLM...
+2024-03-17 17:38:33 [INFO] Prompt ID: dd95d043-10c9-4703-a12c-a52d24da8cd8
+2024-03-17 17:38:33 [INFO] Executing Step 0: CacheLookup
+2024-03-17 17:38:33 [INFO] Executing Step 1: PromptGeneration
+2024-03-17 17:38:33 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for all the columns together 
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-17 17:38:33 [INFO] Executing Step 2: CodeGenerator
+2024-03-17 17:38:35 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:38:35 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs, ignore_index=True)
+df_counts = df.apply(pd.value_counts).sum(axis=1)
+
+# Create a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(df_counts, labels=df_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of All Columns')
+
+# Display the plot
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "temp_chart.png" }
+            ```
+            
+2024-03-17 17:38:35 [INFO] Executing Step 3: CachePopulation
+2024-03-17 17:38:35 [INFO] Executing Step 4: CodeExecution
+2024-03-17 17:38:35 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-17 17:38:35 [INFO] 
+Code running:
+```
+df = pd.concat(dfs, ignore_index=True)
+df_counts = df.apply(pd.value_counts).sum(axis=1)
+plt.figure(figsize=(8, 8))
+plt.pie(df_counts, labels=df_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of All Columns')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-17 17:38:35 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-03-17 17:38:35 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+. Retrying
+2024-03-17 17:38:35 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for all the columns together 
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs, ignore_index=True)
+df_counts = df.apply(pd.value_counts).sum(axis=1)
+
+# Create a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(df_counts, labels=df_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of All Columns')
+
+# Display the plot
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "temp_chart.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+
+
+Fix the python code above and return the new python code:
+2024-03-17 17:38:38 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:38:38 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-17 17:38:38 [INFO] 
+Code running:
+```
+df = pd.concat(dfs, ignore_index=True)
+df_counts = df.apply(pd.Series.value_counts).sum(axis=1)
+plt.figure(figsize=(8, 8))
+plt.pie(df_counts, labels=df_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of All Columns')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-17 17:38:38 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-03-17 17:38:38 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+. Retrying
+2024-03-17 17:38:38 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for all the columns together 
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs, ignore_index=True)
+df_counts = df.apply(pd.value_counts).sum(axis=1)
+
+# Create a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(df_counts, labels=df_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of All Columns')
+
+# Display the plot
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "temp_chart.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+
+
+Fix the python code above and return the new python code:
+2024-03-17 17:38:41 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:38:41 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-17 17:38:41 [INFO] 
+Code running:
+```
+df = pd.concat(dfs, ignore_index=True)
+df_counts = df.apply(pd.Series.value_counts).sum(axis=1)
+plt.figure(figsize=(8, 8))
+plt.pie(df_counts, labels=df_counts.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of All Columns')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-17 17:38:41 [ERROR] Pipeline failed on step 4: All objects passed were None
+2024-03-17 17:38:57 [INFO] Question: create a pie chart for all the Species
+2024-03-17 17:38:57 [INFO] Running PandasAI with openai LLM...
+2024-03-17 17:38:57 [INFO] Prompt ID: cb645ed6-5aa1-45e5-941b-ebc769135451
+2024-03-17 17:38:57 [INFO] Executing Step 0: CacheLookup
+2024-03-17 17:38:57 [INFO] Executing Step 1: PromptGeneration
+2024-03-17 17:38:57 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for all the Species
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-17 17:38:57 [INFO] Executing Step 2: CodeGenerator
+2024-03-17 17:39:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:39:01 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs, ignore_index=True)
+species_count = df['Species'].value_counts()
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Species')
+
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+            ```
+            
+2024-03-17 17:39:01 [INFO] Executing Step 3: CachePopulation
+2024-03-17 17:39:01 [INFO] Executing Step 4: CodeExecution
+2024-03-17 17:39:01 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-17 17:39:01 [INFO] 
+Code running:
+```
+df = pd.concat(dfs, ignore_index=True)
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-17 17:39:01 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-03-17 17:39:01 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+. Retrying
+2024-03-17 17:39:01 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for all the Species
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs, ignore_index=True)
+species_count = df['Species'].value_counts()
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Species')
+
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+
+
+Fix the python code above and return the new python code:
+2024-03-17 17:39:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2024-03-17 17:39:01 [INFO] Retrying request to /chat/completions in 20.000000 seconds
+2024-03-17 17:39:24 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:39:24 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-17 17:39:24 [INFO] 
+Code running:
+```
+df = pd.concat(dfs, ignore_index=True)
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-17 17:39:24 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-03-17 17:39:24 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+. Retrying
+2024-03-17 17:39:24 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for all the Species
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs, ignore_index=True)
+species_count = df['Species'].value_counts()
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Species')
+
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 1, in <module>
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 368, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandas\core\reshape\concat.py", line 448, in __init__
+    raise ValueError("All objects passed were None")
+ValueError: All objects passed were None
+
+
+Fix the python code above and return the new python code:
+2024-03-17 17:39:24 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2024-03-17 17:39:24 [INFO] Retrying request to /chat/completions in 20.000000 seconds
+2024-03-17 17:39:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:39:47 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-17 17:39:47 [INFO] 
+Code running:
+```
+df = pd.concat(dfs, ignore_index=True)
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-17 17:39:47 [ERROR] Pipeline failed on step 4: All objects passed were None
+2024-03-17 17:40:10 [INFO] Question: create a pie chart for the spieces
+2024-03-17 17:40:10 [INFO] Running PandasAI with openai LLM...
+2024-03-17 17:40:10 [INFO] Prompt ID: 28558e7c-8924-46de-8920-54abc2103ef2
+2024-03-17 17:40:10 [INFO] Executing Step 0: CacheLookup
+2024-03-17 17:40:10 [INFO] Executing Step 1: PromptGeneration
+2024-03-17 17:40:10 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for the spieces
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-17 17:40:10 [INFO] Executing Step 2: CodeGenerator
+2024-03-17 17:40:12 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-17 17:40:12 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart for the species
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Species')
+
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart.png"}
+            ```
+            
+2024-03-17 17:40:12 [INFO] Executing Step 3: CachePopulation
+2024-03-17 17:40:12 [INFO] Executing Step 4: CodeExecution
+2024-03-17 17:40:12 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-17 17:40:12 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-17 17:41:17 [INFO] Executing Step 5: ResultValidation
+2024-03-17 17:41:17 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-03-17 17:41:17 [INFO] Executed in: 66.69751906394958s
+2024-03-17 17:41:17 [INFO] Executing Step 6: ResultParsing
+2024-03-21 14:23:45 [INFO] Question: create a pie chart for the specices
+2024-03-21 14:23:45 [INFO] Running PandasAI with openai LLM...
+2024-03-21 14:23:45 [INFO] Prompt ID: 1541348e-4d27-4522-ad34-8b39d4f6507e
+2024-03-21 14:23:45 [INFO] Executing Step 0: CacheLookup
+2024-03-21 14:23:45 [INFO] Executing Step 1: PromptGeneration
+2024-03-21 14:23:45 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for the specices
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-21 14:23:45 [INFO] Executing Step 2: CodeGenerator
+2024-03-21 14:23:48 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-21 14:23:48 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart for the species
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+            ```
+            
+2024-03-21 14:23:48 [INFO] Executing Step 3: CachePopulation
+2024-03-21 14:23:48 [INFO] Executing Step 4: CodeExecution
+2024-03-21 14:23:48 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-21 14:23:48 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-21 14:23:57 [INFO] Executing Step 5: ResultValidation
+2024-03-21 14:23:57 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-03-21 14:23:57 [INFO] Executed in: 12.052805423736572s
+2024-03-21 14:23:57 [INFO] Executing Step 6: ResultParsing
+2024-03-21 14:24:20 [INFO] Question: describe the data 
+2024-03-21 14:24:20 [INFO] Running PandasAI with openai LLM...
+2024-03-21 14:24:20 [INFO] Prompt ID: c6afca57-866e-45c8-8e19-806bfcd31017
+2024-03-21 14:24:20 [INFO] Executing Step 0: CacheLookup
+2024-03-21 14:24:20 [INFO] Executing Step 1: PromptGeneration
+2024-03-21 14:24:20 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: describe the data 
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-21 14:24:20 [INFO] Executing Step 2: CodeGenerator
+2024-03-21 14:24:22 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-21 14:24:22 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Describe the data
+dfs[0].info()
+
+# Declare result var
+result = {"type": "string", "value": "The data contains information about SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm, and Species of Iris flowers."}
+            ```
+            
+2024-03-21 14:24:22 [INFO] Executing Step 3: CachePopulation
+2024-03-21 14:24:22 [INFO] Executing Step 4: CodeExecution
+2024-03-21 14:24:22 [INFO] 
+Code running:
+```
+dfs[0].info()
+result = {'type': 'string', 'value': 'The data contains information about SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm, and Species of Iris flowers.'}
+        ```
+2024-03-21 14:24:22 [INFO] Executing Step 5: ResultValidation
+2024-03-21 14:24:22 [INFO] Answer: {'type': 'string', 'value': 'The data contains information about SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm, and Species of Iris flowers.'}
+2024-03-21 14:24:22 [INFO] Executed in: 2.3008694648742676s
+2024-03-21 14:24:22 [INFO] Executing Step 6: ResultParsing
+2024-03-21 14:24:40 [INFO] Question: Analyzie the data
+2024-03-21 14:24:40 [INFO] Running PandasAI with openai LLM...
+2024-03-21 14:24:40 [INFO] Prompt ID: c82c52e3-6499-4db3-a68c-38fedd328cb7
+2024-03-21 14:24:40 [INFO] Executing Step 0: CacheLookup
+2024-03-21 14:24:40 [INFO] Executing Step 1: PromptGeneration
+2024-03-21 14:24:40 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: Analyzie the data
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-21 14:24:40 [INFO] Executing Step 2: CodeGenerator
+2024-03-21 14:24:42 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-21 14:24:42 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Analyze the data
+for df in dfs:
+    print(df.describe())
+
+# Declare result var
+result = {"type": "string", "value": "Data analysis completed."}
+            ```
+            
+2024-03-21 14:24:42 [INFO] Executing Step 3: CachePopulation
+2024-03-21 14:24:42 [INFO] Executing Step 4: CodeExecution
+2024-03-21 14:24:42 [INFO] 
+Code running:
+```
+for df in dfs:
+    print(df.describe())
+result = {'type': 'string', 'value': 'Data analysis completed.'}
+        ```
+2024-03-21 14:24:42 [INFO] Executing Step 5: ResultValidation
+2024-03-21 14:24:42 [INFO] Answer: {'type': 'string', 'value': 'Data analysis completed.'}
+2024-03-21 14:24:42 [INFO] Executed in: 1.6382439136505127s
+2024-03-21 14:24:42 [INFO] Executing Step 6: ResultParsing
+2024-03-26 01:27:42 [INFO] Question: what is the mean and median of all columns?
+2024-03-26 01:27:42 [INFO] Running PandasAI with openai LLM...
+2024-03-26 01:27:42 [INFO] Prompt ID: 98d6ff55-98ab-40c9-af0b-491fb668b352
+2024-03-26 01:27:42 [INFO] Executing Step 0: CacheLookup
+2024-03-26 01:27:42 [INFO] Executing Step 1: PromptGeneration
+2024-03-26 01:27:42 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: what is the mean and median of all columns?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-26 01:27:42 [INFO] Executing Step 2: CodeGenerator
+2024-03-26 01:27:46 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-26 01:27:46 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+mean_values = []
+median_values = []
+
+for df in dfs:
+    mean_values.append(df.mean())
+    median_values.append(df.median())
+
+mean_df = pd.DataFrame(mean_values, index=range(1, len(dfs)+1), columns=df.columns)
+median_df = pd.DataFrame(median_values, index=range(1, len(dfs)+1), columns=df.columns)
+
+result = {
+    "type": "dataframe",
+    "value": pd.concat([mean_df, median_df], keys=['Mean', 'Median'])
+}
+            ```
+            
+2024-03-26 01:27:46 [INFO] Executing Step 3: CachePopulation
+2024-03-26 01:27:46 [INFO] Executing Step 4: CodeExecution
+2024-03-26 01:27:46 [INFO] 
+Code running:
+```
+mean_values = []
+median_values = []
+for df in dfs:
+    mean_values.append(df.mean())
+    median_values.append(df.median())
+mean_df = pd.DataFrame(mean_values, index=range(1, len(dfs) + 1), columns=df.columns)
+median_df = pd.DataFrame(median_values, index=range(1, len(dfs) + 1), columns=df.columns)
+result = {'type': 'dataframe', 'value': pd.concat([mean_df, median_df], keys=['Mean', 'Median'])}
+        ```
+2024-03-26 01:27:46 [INFO] Executing Step 5: ResultValidation
+2024-03-26 01:27:46 [INFO] Answer: {'type': 'dataframe', 'value':             Id  SepalLengthCm  SepalWidthCm  PetalLengthCm  PetalWidthCm  Species
+Mean   1  75.5       5.843333         3.054       3.758667      1.198667      NaN
+Median 1  75.5       5.800000         3.000       4.350000      1.300000      NaN}
+2024-03-26 01:27:46 [INFO] Executed in: 4.303972482681274s
+2024-03-26 01:27:46 [INFO] Executing Step 6: ResultParsing
+2024-03-26 01:28:45 [INFO] Question: create a pie chart for species?
+2024-03-26 01:28:45 [INFO] Running PandasAI with openai LLM...
+2024-03-26 01:28:45 [INFO] Prompt ID: 016a48ac-d154-4848-b782-f437415251d0
+2024-03-26 01:28:45 [INFO] Executing Step 0: CacheLookup
+2024-03-26 01:28:45 [INFO] Executing Step 1: PromptGeneration
+2024-03-26 01:28:45 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for species?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-03-26 01:28:45 [INFO] Executing Step 2: CodeGenerator
+2024-03-26 01:28:48 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-26 01:28:48 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart for species
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Save the plot as an image
+plt.savefig('species_pie_chart.png')
+
+# Declare result var
+result = { "type": "plot", "value": "species_pie_chart.png" }
+            ```
+            
+2024-03-26 01:28:48 [INFO] Executing Step 3: CachePopulation
+2024-03-26 01:28:48 [INFO] Executing Step 4: CodeExecution
+2024-03-26 01:28:48 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-03-26 01:28:48 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.savefig('C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-03-26 01:28:48 [INFO] Executing Step 5: ResultValidation
+2024-03-26 01:28:48 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-03-26 01:28:48 [INFO] Executed in: 3.508992910385132s
+2024-03-26 01:28:48 [INFO] Executing Step 6: ResultParsing
+2024-05-12 19:34:56 [INFO] Question: mean of sepallengthcm column?
+2024-05-12 19:34:56 [INFO] Running PandasAI with openai LLM...
+2024-05-12 19:34:56 [INFO] Prompt ID: a09ce0c9-75e5-4b51-ba56-7382b56ebef7
+2024-05-12 19:34:56 [INFO] Executing Step 0: CacheLookup
+2024-05-12 19:34:56 [INFO] Executing Step 1: PromptGeneration
+2024-05-12 19:34:56 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: mean of sepallengthcm column?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-12 19:34:56 [INFO] Executing Step 2: CodeGenerator
+2024-05-12 19:34:58 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-12 19:34:58 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+mean_sepallengthcm = dfs[0]['SepalLengthCm'].mean()
+
+# Declare result var
+result = { "type": "number", "value": mean_sepallengthcm }
+            ```
+            
+2024-05-12 19:34:58 [INFO] Executing Step 3: CachePopulation
+2024-05-12 19:34:58 [INFO] Executing Step 4: CodeExecution
+2024-05-12 19:34:58 [INFO] 
+Code running:
+```
+mean_sepallengthcm = dfs[0]['SepalLengthCm'].mean()
+result = {'type': 'number', 'value': mean_sepallengthcm}
+        ```
+2024-05-12 19:34:58 [INFO] Executing Step 5: ResultValidation
+2024-05-12 19:34:58 [INFO] Answer: {'type': 'number', 'value': 5.843333333333334}
+2024-05-12 19:34:58 [INFO] Executed in: 2.015165328979492s
+2024-05-12 19:34:58 [INFO] Executing Step 6: ResultParsing
+2024-05-12 19:35:17 [INFO] Question: pie chat for the Species
+2024-05-12 19:35:17 [INFO] Running PandasAI with openai LLM...
+2024-05-12 19:35:17 [INFO] Prompt ID: b61bd467-ff48-4c0f-9bd5-ba2dbd654013
+2024-05-12 19:35:17 [INFO] Executing Step 0: CacheLookup
+2024-05-12 19:35:17 [INFO] Executing Step 1: PromptGeneration
+2024-05-12 19:35:17 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: pie chat for the Species
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-12 19:35:17 [INFO] Executing Step 2: CodeGenerator
+2024-05-12 19:35:19 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-12 19:35:19 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Pie chart for the Species
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "temp_chart.png" }
+            ```
+            
+2024-05-12 19:35:19 [INFO] Executing Step 3: CachePopulation
+2024-05-12 19:35:19 [INFO] Executing Step 4: CodeExecution
+2024-05-12 19:35:19 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-12 19:35:19 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-05-12 19:35:24 [INFO] Executing Step 5: ResultValidation
+2024-05-12 19:35:24 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-05-12 19:35:24 [INFO] Executed in: 7.483067989349365s
+2024-05-12 19:35:24 [INFO] Executing Step 6: ResultParsing
+2024-05-14 13:49:22 [INFO] Question: what is the mean of a sepallengthcm?
+2024-05-14 13:49:22 [INFO] Running PandasAI with openai LLM...
+2024-05-14 13:49:22 [INFO] Prompt ID: 350fb7ed-e784-448e-81dd-6e7cf3137fd2
+2024-05-14 13:49:23 [INFO] Executing Step 0: CacheLookup
+2024-05-14 13:49:23 [INFO] Executing Step 1: PromptGeneration
+2024-05-14 13:49:23 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: what is the mean of a sepallengthcm?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-14 13:49:23 [INFO] Executing Step 2: CodeGenerator
+2024-05-14 13:49:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-14 13:49:25 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+mean_sepallengthcm = dfs[0]['SepalLengthCm'].mean()
+
+# Declare result var
+result = { "type": "number", "value": mean_sepallengthcm }
+            ```
+            
+2024-05-14 13:49:25 [INFO] Executing Step 3: CachePopulation
+2024-05-14 13:49:25 [INFO] Executing Step 4: CodeExecution
+2024-05-14 13:49:25 [INFO] 
+Code running:
+```
+mean_sepallengthcm = dfs[0]['SepalLengthCm'].mean()
+result = {'type': 'number', 'value': mean_sepallengthcm}
+        ```
+2024-05-14 13:49:25 [INFO] Executing Step 5: ResultValidation
+2024-05-14 13:49:25 [INFO] Answer: {'type': 'number', 'value': 5.843333333333334}
+2024-05-14 13:49:25 [INFO] Executed in: 2.3428144454956055s
+2024-05-14 13:49:25 [INFO] Executing Step 6: ResultParsing
+2024-05-14 13:49:35 [INFO] Question: what is the median of a sepallengthcm?
+2024-05-14 13:49:35 [INFO] Running PandasAI with openai LLM...
+2024-05-14 13:49:35 [INFO] Prompt ID: 72dea26b-1393-4ed9-b0c7-558db1e2cbfc
+2024-05-14 13:49:35 [INFO] Executing Step 0: CacheLookup
+2024-05-14 13:49:35 [INFO] Executing Step 1: PromptGeneration
+2024-05-14 13:49:35 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: what is the median of a sepallengthcm?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-14 13:49:35 [INFO] Executing Step 2: CodeGenerator
+2024-05-14 13:49:39 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-14 13:49:39 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+median_sepallengthcm = dfs[0]['SepalLengthCm'].median()
+
+# Declare result var
+result = { "type": "number", "value": median_sepallengthcm }
+            ```
+            
+2024-05-14 13:49:39 [INFO] Executing Step 3: CachePopulation
+2024-05-14 13:49:39 [INFO] Executing Step 4: CodeExecution
+2024-05-14 13:49:39 [INFO] 
+Code running:
+```
+median_sepallengthcm = dfs[0]['SepalLengthCm'].median()
+result = {'type': 'number', 'value': median_sepallengthcm}
+        ```
+2024-05-14 13:49:39 [INFO] Executing Step 5: ResultValidation
+2024-05-14 13:49:39 [INFO] Answer: {'type': 'number', 'value': 5.8}
+2024-05-14 13:49:39 [INFO] Executed in: 3.74591064453125s
+2024-05-14 13:49:39 [INFO] Executing Step 6: ResultParsing
+2024-05-14 13:50:28 [INFO] Question: create a pie chart of a speices column?
+2024-05-14 13:50:28 [INFO] Running PandasAI with openai LLM...
+2024-05-14 13:50:28 [INFO] Prompt ID: 5e0b81fc-44bf-443a-961d-8e90bc03e55e
+2024-05-14 13:50:28 [INFO] Executing Step 0: CacheLookup
+2024-05-14 13:50:28 [INFO] Executing Step 1: PromptGeneration
+2024-05-14 13:50:28 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart of a speices column?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-14 13:50:28 [INFO] Executing Step 2: CodeGenerator
+2024-05-14 13:50:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-14 13:50:31 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a pie chart of the Species column
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Display the pie chart
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "pie_chart.png" }
+            ```
+            
+2024-05-14 13:50:31 [INFO] Executing Step 3: CachePopulation
+2024-05-14 13:50:31 [INFO] Executing Step 4: CodeExecution
+2024-05-14 13:50:31 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-14 13:50:31 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-05-14 13:50:59 [INFO] Executing Step 5: ResultValidation
+2024-05-14 13:50:59 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-05-14 13:50:59 [INFO] Executed in: 31.402547121047974s
+2024-05-14 13:50:59 [INFO] Executing Step 6: ResultParsing
+2024-05-15 11:00:51 [INFO] Question: what is the mean of a sepallengthcm?
+2024-05-15 11:00:51 [INFO] Running PandasAI with openai LLM...
+2024-05-15 11:00:51 [INFO] Prompt ID: eed5be01-a71e-4c78-976a-4a16e35d9d6d
+2024-05-15 11:00:51 [INFO] Executing Step 0: CacheLookup
+2024-05-15 11:00:51 [INFO] Using cached response
+2024-05-15 11:00:51 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 11:00:51 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 11:00:51 [INFO] Executing Step 3: CachePopulation
+2024-05-15 11:00:51 [INFO] Executing Step 4: CodeExecution
+2024-05-15 11:00:51 [INFO] 
+Code running:
+```
+mean_sepallengthcm = dfs[0]['SepalLengthCm'].mean()
+result = {'type': 'number', 'value': mean_sepallengthcm}
+        ```
+2024-05-15 11:00:51 [INFO] Executing Step 5: ResultValidation
+2024-05-15 11:00:51 [INFO] Answer: {'type': 'number', 'value': 5.843333333333334}
+2024-05-15 11:00:51 [INFO] Executed in: 0.1578505039215088s
+2024-05-15 11:00:51 [INFO] Executing Step 6: ResultParsing
+2024-05-15 11:01:26 [INFO] Question: create a pie chat for a species?
+2024-05-15 11:01:26 [INFO] Running PandasAI with openai LLM...
+2024-05-15 11:01:26 [INFO] Prompt ID: 5338840c-4dd7-4071-ad1c-07877f838e2e
+2024-05-15 11:01:26 [INFO] Executing Step 0: CacheLookup
+2024-05-15 11:01:26 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 11:01:26 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chat for a species?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-15 11:01:26 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 11:01:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 11:01:29 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8,8))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+            ```
+            
+2024-05-15 11:01:29 [INFO] Executing Step 3: CachePopulation
+2024-05-15 11:01:29 [INFO] Executing Step 4: CodeExecution
+2024-05-15 11:01:29 [INFO] 
+Code running:
+```
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+result = {'type': 'plot', 'value': plt}
+        ```
+2024-05-15 11:01:29 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-05-15 11:01:29 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+. Retrying
+2024-05-15 11:01:29 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chat for a species?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8,8))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+
+
+Fix the python code above and return the new python code:
+2024-05-15 11:01:32 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 11:01:32 [INFO] 
+Code running:
+```
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+result = {'type': 'plot', 'value': plt}
+plt.show()
+result = {'type': 'plot', 'value': plt}
+        ```
+2024-05-15 11:01:54 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-05-15 11:01:54 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+. Retrying
+2024-05-15 11:01:54 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chat for a species?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8,8))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+
+
+Fix the python code above and return the new python code:
+2024-05-15 11:01:57 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 11:01:57 [INFO] 
+Code running:
+```
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+        ```
+2024-05-15 11:02:02 [ERROR] Pipeline failed on step 4: No result returned
+2024-05-15 13:38:23 [INFO] Question: what is the mean of a sepallengthcm?
+2024-05-15 13:38:23 [INFO] Running PandasAI with openai LLM...
+2024-05-15 13:38:23 [INFO] Prompt ID: 212f494c-554d-4392-9c1a-e64c2a3e1e6c
+2024-05-15 13:38:23 [INFO] Executing Step 0: CacheLookup
+2024-05-15 13:38:23 [INFO] Using cached response
+2024-05-15 13:38:23 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 13:38:23 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 13:38:23 [INFO] Executing Step 3: CachePopulation
+2024-05-15 13:38:23 [INFO] Executing Step 4: CodeExecution
+2024-05-15 13:38:23 [INFO] 
+Code running:
+```
+mean_sepallengthcm = dfs[0]['SepalLengthCm'].mean()
+result = {'type': 'number', 'value': mean_sepallengthcm}
+        ```
+2024-05-15 13:38:23 [INFO] Executing Step 5: ResultValidation
+2024-05-15 13:38:23 [INFO] Answer: {'type': 'number', 'value': 5.843333333333334}
+2024-05-15 13:38:23 [INFO] Executed in: 0.04227399826049805s
+2024-05-15 13:38:23 [INFO] Executing Step 6: ResultParsing
+2024-05-15 13:38:44 [INFO] Question: create a pie chart for a species?
+2024-05-15 13:38:44 [INFO] Running PandasAI with openai LLM...
+2024-05-15 13:38:44 [INFO] Prompt ID: ce3864dd-b765-446c-a1bf-8b8989f923c7
+2024-05-15 13:38:44 [INFO] Executing Step 0: CacheLookup
+2024-05-15 13:38:44 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 13:38:44 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for a species?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-15 13:38:44 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 13:38:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 13:38:47 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+            ```
+            
+2024-05-15 13:38:47 [INFO] Executing Step 3: CachePopulation
+2024-05-15 13:38:47 [INFO] Executing Step 4: CodeExecution
+2024-05-15 13:38:47 [INFO] 
+Code running:
+```
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+result = {'type': 'plot', 'value': plt}
+        ```
+2024-05-15 13:38:47 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-05-15 13:38:47 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+. Retrying
+2024-05-15 13:38:47 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for a species?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 202, in _format_response
+    with open(result["value"], "rb") as image_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not module
+
+
+Fix the python code above and return the new python code:
+2024-05-15 13:38:49 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 13:38:49 [INFO] 
+Code running:
+```
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+        ```
+2024-05-15 13:39:11 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-05-15 13:39:11 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 216, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+. Retrying
+2024-05-15 13:39:11 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: create a pie chart for a species?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+
+# Declare result var
+result = { "type": "plot", "value": plt }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 216, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-05-15 13:39:13 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 13:39:13 [INFO] 
+Code running:
+```
+species_count = dfs[0]['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+        ```
+2024-05-15 13:39:15 [ERROR] Pipeline failed on step 4: No result returned
+2024-05-15 16:16:22 [INFO] Question: what are the functinalitiers we can apply?
+2024-05-15 16:16:22 [INFO] Running PandasAI with openai LLM...
+2024-05-15 16:16:22 [INFO] Prompt ID: 27c3cfcb-e9a2-46e2-aa70-bc92f7469224
+2024-05-15 16:16:22 [INFO] Executing Step 0: CacheLookup
+2024-05-15 16:16:22 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 16:16:22 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: what are the functinalitiers we can apply?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-15 16:16:22 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 16:16:26 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:16:26 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+# Function to get the summary statistics for each dataframe in the list
+def get_summary_statistics(dfs):
+    summaries = []
+    for df in dfs:
+        summary = df.describe()
+        summaries.append(summary)
+    return summaries
+
+# Call the function with the list of dataframes
+summary_stats = get_summary_statistics(dfs)
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot")
+result = { "type": "dataframe", "value": summary_stats }
+            ```
+            
+2024-05-15 16:16:26 [INFO] Executing Step 3: CachePopulation
+2024-05-15 16:16:26 [INFO] Executing Step 4: CodeExecution
+2024-05-15 16:16:26 [INFO] 
+Code running:
+```
+def get_summary_statistics(dfs):
+    summaries = []
+    for df in dfs:
+        summary = df.describe()
+        summaries.append(summary)
+    return summaries
+
+
+summary_stats = get_summary_statistics(dfs)
+result = {'type': 'dataframe', 'value': summary_stats}
+        ```
+2024-05-15 16:16:26 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-05-15 16:16:26 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 92, in convert_dataframe_to_dict
+    json_data = json.loads(df.to_json(orient="split", date_format="iso"))
+                           ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'to_json'
+. Retrying
+2024-05-15 16:16:26 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: what are the functinalitiers we can apply?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+# Function to get the summary statistics for each dataframe in the list
+def get_summary_statistics(dfs):
+    summaries = []
+    for df in dfs:
+        summary = df.describe()
+        summaries.append(summary)
+    return summaries
+
+# Call the function with the list of dataframes
+summary_stats = get_summary_statistics(dfs)
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot")
+result = { "type": "dataframe", "value": summary_stats }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 92, in convert_dataframe_to_dict
+    json_data = json.loads(df.to_json(orient="split", date_format="iso"))
+                           ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'to_json'
+
+
+Fix the python code above and return the new python code:
+2024-05-15 16:16:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:16:29 [INFO] 
+Code running:
+```
+def get_summary_statistics(dfs):
+    summaries = []
+    for df in dfs:
+        summary = df.describe()
+        summaries.append(summary)
+    return summaries
+
+
+summary_stats = get_summary_statistics(dfs)
+summary_stats_dicts = [summary.to_dict() for summary in summary_stats]
+result = {'type': 'dataframe', 'value': summary_stats_dicts}
+        ```
+2024-05-15 16:16:29 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-05-15 16:16:29 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 92, in convert_dataframe_to_dict
+    json_data = json.loads(df.to_json(orient="split", date_format="iso"))
+                           ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'to_json'
+. Retrying
+2024-05-15 16:16:29 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: what are the functinalitiers we can apply?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+# Function to get the summary statistics for each dataframe in the list
+def get_summary_statistics(dfs):
+    summaries = []
+    for df in dfs:
+        summary = df.describe()
+        summaries.append(summary)
+    return summaries
+
+# Call the function with the list of dataframes
+summary_stats = get_summary_statistics(dfs)
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot")
+result = { "type": "dataframe", "value": summary_stats }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 92, in convert_dataframe_to_dict
+    json_data = json.loads(df.to_json(orient="split", date_format="iso"))
+                           ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'to_json'
+
+
+Fix the python code above and return the new python code:
+2024-05-15 16:16:33 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:16:33 [INFO] 
+Code running:
+```
+def get_summary_statistics(dfs):
+    summaries = []
+    for df in dfs:
+        summary = df.describe()
+        summaries.append(summary)
+    return summaries
+
+
+summary_stats = get_summary_statistics(dfs)
+summary_stats_dicts = [summary.to_dict() for summary in summary_stats]
+result = {'type': 'dataframe', 'value': summary_stats_dicts}
+result
+        ```
+2024-05-15 16:16:33 [ERROR] Pipeline failed on step 4: 'list' object has no attribute 'to_json'
+2024-05-15 16:17:27 [INFO] Question: what are the operation that can performed in this?
+2024-05-15 16:17:27 [INFO] Running PandasAI with openai LLM...
+2024-05-15 16:17:27 [INFO] Prompt ID: 8f14c8de-a6f9-40af-a432-d18d0f8fa002
+2024-05-15 16:17:27 [INFO] Executing Step 0: CacheLookup
+2024-05-15 16:17:27 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 16:17:27 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: what are the operation that can performed in this?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-15 16:17:27 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 16:17:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:17:31 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+for df in dfs:
+    # Perform operations on each dataframe in the list
+    print(df.head())
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+result = {"type": "string", "value": "Performed operations on all dataframes."}
+            ```
+            
+2024-05-15 16:17:31 [INFO] Executing Step 3: CachePopulation
+2024-05-15 16:17:31 [INFO] Executing Step 4: CodeExecution
+2024-05-15 16:17:31 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-15 16:17:31 [INFO] 
+Code running:
+```
+for df in dfs:
+    print(df.head())
+result = {'type': 'string', 'value': 'Performed operations on all dataframes.'}
+        ```
+2024-05-15 16:17:31 [INFO] Executing Step 5: ResultValidation
+2024-05-15 16:17:31 [INFO] Answer: {'type': 'string', 'value': 'Performed operations on all dataframes.'}
+2024-05-15 16:17:31 [INFO] Executed in: 3.9668288230895996s
+2024-05-15 16:17:31 [INFO] Executing Step 6: ResultParsing
+2024-05-15 16:18:20 [INFO] Question: perform data cleaning?
+2024-05-15 16:18:20 [INFO] Running PandasAI with openai LLM...
+2024-05-15 16:18:20 [INFO] Prompt ID: 263c6caf-15f2-4b76-bfe6-d4178d211b24
+2024-05-15 16:18:20 [INFO] Executing Step 0: CacheLookup
+2024-05-15 16:18:20 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 16:18:20 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: perform data cleaning?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-15 16:18:20 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 16:18:24 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:18:24 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Data cleaning
+for df in dfs:
+    # Check for missing values
+    missing_values = df.isnull().sum().sum()
+    if missing_values > 0:
+        df.dropna(inplace=True)
+    
+    # Check for duplicates
+    duplicate_rows = df.duplicated().sum()
+    if duplicate_rows > 0:
+        df.drop_duplicates(inplace=True)
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+result = {"type": "dataframe", "value": dfs}
+            ```
+            
+2024-05-15 16:18:24 [INFO] Executing Step 3: CachePopulation
+2024-05-15 16:18:24 [INFO] Executing Step 4: CodeExecution
+2024-05-15 16:18:24 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-15 16:18:24 [INFO] 
+Code running:
+```
+for df in dfs:
+    missing_values = df.isnull().sum().sum()
+    if missing_values > 0:
+        df.dropna(inplace=True)
+    duplicate_rows = df.duplicated().sum()
+    if duplicate_rows > 0:
+        df.drop_duplicates(inplace=True)
+result = {'type': 'dataframe', 'value': dfs}
+        ```
+2024-05-15 16:18:24 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-05-15 16:18:24 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 92, in convert_dataframe_to_dict
+    json_data = json.loads(df.to_json(orient="split", date_format="iso"))
+                           ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'to_json'
+. Retrying
+2024-05-15 16:18:24 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: perform data cleaning?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Data cleaning
+for df in dfs:
+    # Check for missing values
+    missing_values = df.isnull().sum().sum()
+    if missing_values > 0:
+        df.dropna(inplace=True)
+    
+    # Check for duplicates
+    duplicate_rows = df.duplicated().sum()
+    if duplicate_rows > 0:
+        df.drop_duplicates(inplace=True)
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+result = {"type": "dataframe", "value": dfs}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 134, in execute_func
+    step_data = self._generate_exec_step(tag, result)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 183, in _generate_exec_step
+    self._response = self._format_response(result)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 198, in _format_response
+    df_dict = self.convert_dataframe_to_dict(result["value"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 92, in convert_dataframe_to_dict
+    json_data = json.loads(df.to_json(orient="split", date_format="iso"))
+                           ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'to_json'
+
+
+Fix the python code above and return the new python code:
+2024-05-15 16:18:27 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:18:27 [INFO] 
+Code running:
+```
+for i in range(len(dfs)):
+    df = dfs[i]
+    missing_values = df.isnull().sum().sum()
+    if missing_values > 0:
+        df.dropna(inplace=True)
+    duplicate_rows = df.duplicated().sum()
+    if duplicate_rows > 0:
+        df.drop_duplicates(inplace=True)
+result = {'type': 'dataframe', 'value': dfs}
+        ```
+2024-05-15 16:18:27 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-05-15 16:18:27 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'isnull'
+. Retrying
+2024-05-15 16:18:27 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+The user asked the following question:
+Q: perform data cleaning?
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Data cleaning
+for df in dfs:
+    # Check for missing values
+    missing_values = df.isnull().sum().sum()
+    if missing_values > 0:
+        df.dropna(inplace=True)
+    
+    # Check for duplicates
+    duplicate_rows = df.duplicated().sum()
+    if duplicate_rows > 0:
+        df.drop_duplicates(inplace=True)
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+result = {"type": "dataframe", "value": dfs}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\pipelines\smart_datalake_chat\code_execution.py", line 53, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\venv\Lib\site-packages\pandasai\helpers\code_manager.py", line 212, in execute_code
+    exec(code_to_run, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'isnull'
+
+
+Fix the python code above and return the new python code:
+2024-05-15 16:18:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:18:31 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-15 16:18:31 [INFO] 
+Code running:
+```
+for df in dfs:
+    if df is not None:
+        missing_values = df.isnull().sum().sum()
+        if missing_values > 0:
+            df.dropna(inplace=True)
+        duplicate_rows = df.duplicated().sum()
+        if duplicate_rows > 0:
+            df.drop_duplicates(inplace=True)
+result = {'type': 'dataframe', 'value': dfs}
+        ```
+2024-05-15 16:18:31 [ERROR] Pipeline failed on step 4: 'list' object has no attribute 'to_json'
+2024-05-15 16:19:26 [INFO] Question: create a pie chart for species?
+2024-05-15 16:19:26 [INFO] Running PandasAI with openai LLM...
+2024-05-15 16:19:26 [INFO] Prompt ID: e8f469e2-1c76-4f1e-a3c5-c66f73dadb96
+2024-05-15 16:19:26 [INFO] Executing Step 0: CacheLookup
+2024-05-15 16:19:26 [INFO] Using cached response
+2024-05-15 16:19:26 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 16:19:26 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 16:19:26 [INFO] Executing Step 3: CachePopulation
+2024-05-15 16:19:26 [INFO] Executing Step 4: CodeExecution
+2024-05-15 16:19:26 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-15 16:19:26 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.savefig('C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-05-15 16:19:26 [INFO] Executing Step 5: ResultValidation
+2024-05-15 16:19:26 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-05-15 16:19:26 [INFO] Executed in: 0.21924042701721191s
+2024-05-15 16:19:26 [INFO] Executing Step 6: ResultParsing
+2024-05-15 16:19:56 [INFO] Question: create a bar chart for species?
+2024-05-15 16:19:56 [INFO] Running PandasAI with openai LLM...
+2024-05-15 16:19:56 [INFO] Prompt ID: 9c47def9-eeb3-4c68-b1e7-bd701e6aa4d7
+2024-05-15 16:19:56 [INFO] Executing Step 0: CacheLookup
+2024-05-15 16:19:56 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 16:19:56 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+1,5.1,3.5,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a bar chart for species?
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-15 16:19:56 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 16:19:59 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-15 16:19:59 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Create a bar chart for species
+species_count = df['Species'].value_counts()
+species_count.plot(kind='bar')
+plt.xlabel('Species')
+plt.ylabel('Count')
+plt.title('Count of Each Species')
+
+plt.show()
+
+# Declare result var
+result = { "type": "plot", "value": "bar_chart.png" }
+            ```
+            
+2024-05-15 16:19:59 [INFO] Executing Step 3: CachePopulation
+2024-05-15 16:19:59 [INFO] Executing Step 4: CodeExecution
+2024-05-15 16:19:59 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-15 16:19:59 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+species_count.plot(kind='bar')
+plt.xlabel('Species')
+plt.ylabel('Count')
+plt.title('Count of Each Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-05-15 16:24:07 [INFO] Question: create a bar chart for the species
+2024-05-15 16:24:07 [INFO] Running PandasAI with openai LLM...
+2024-05-15 16:24:07 [INFO] Prompt ID: 552d9a70-9b29-4c81-9c28-1a0f5003e29a
+2024-05-15 16:24:07 [INFO] Executing Step 0: CacheLookup
+2024-05-15 16:24:07 [INFO] Using cached response
+2024-05-15 16:24:07 [INFO] Executing Step 1: PromptGeneration
+2024-05-15 16:24:07 [INFO] Executing Step 2: CodeGenerator
+2024-05-15 16:24:07 [INFO] Executing Step 3: CachePopulation
+2024-05-15 16:24:07 [INFO] Executing Step 4: CodeExecution
+2024-05-15 16:24:07 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-15 16:24:07 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_counts = df['Species'].value_counts()
+plt.figure(figsize=(10, 6))
+species_counts.plot(kind='bar', color='skyblue')
+plt.title('Count of Each Species')
+plt.xlabel('Species')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.grid(axis='y', linestyle='--', linewidth=0.5)
+plt.tight_layout()
+plt.savefig('C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-05-15 16:24:08 [INFO] Executing Step 5: ResultValidation
+2024-05-15 16:24:08 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-05-15 16:24:08 [INFO] Executed in: 0.5611128807067871s
+2024-05-15 16:24:08 [INFO] Executing Step 6: ResultParsing
+2024-05-18 16:38:54 [INFO] Question: WHAT ARE THE MEAN AND MEDIAN OF A SEPALLENGTHCM
+2024-05-18 16:38:55 [INFO] Running PandasAI with openai LLM...
+2024-05-18 16:38:55 [INFO] Prompt ID: 93ae34a3-5fbb-4132-a24d-513fbd15a40d
+2024-05-18 16:38:55 [INFO] Executing Step 0: CacheLookup
+2024-05-18 16:38:55 [INFO] Executing Step 1: PromptGeneration
+2024-05-18 16:38:55 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: WHAT ARE THE MEAN AND MEDIAN OF A SEPALLENGTHCM
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-18 16:38:55 [INFO] Executing Step 2: CodeGenerator
+2024-05-18 16:38:57 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-18 16:38:57 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+mean_sepal_length = dfs[0]['SepalLengthCm'].mean()
+median_sepal_length = dfs[0]['SepalLengthCm'].median()
+
+# Declare result var
+result = { "type": "string", "value": f"The mean of SepalLengthCm is {mean_sepal_length} and the median is {median_sepal_length}." }
+            ```
+            
+2024-05-18 16:38:57 [INFO] Executing Step 3: CachePopulation
+2024-05-18 16:38:57 [INFO] Executing Step 4: CodeExecution
+2024-05-18 16:38:57 [INFO] 
+Code running:
+```
+mean_sepal_length = dfs[0]['SepalLengthCm'].mean()
+median_sepal_length = dfs[0]['SepalLengthCm'].median()
+result = {'type': 'string', 'value': f'The mean of SepalLengthCm is {mean_sepal_length} and the median is {median_sepal_length}.'}
+        ```
+2024-05-18 16:38:57 [INFO] Executing Step 5: ResultValidation
+2024-05-18 16:38:57 [INFO] Answer: {'type': 'string', 'value': 'The mean of SepalLengthCm is 5.843333333333334 and the median is 5.8.'}
+2024-05-18 16:38:57 [INFO] Executed in: 2.5168650150299072s
+2024-05-18 16:38:57 [INFO] Executing Step 6: ResultParsing
+2024-05-18 16:41:06 [INFO] Question: create a pie chart for a species
+2024-05-18 16:41:06 [INFO] Running PandasAI with openai LLM...
+2024-05-18 16:41:06 [INFO] Prompt ID: 2114bddf-3098-4141-bc38-53be9f6ac38b
+2024-05-18 16:41:06 [INFO] Executing Step 0: CacheLookup
+2024-05-18 16:41:06 [INFO] Executing Step 1: PromptGeneration
+2024-05-18 16:41:06 [INFO] Using prompt: <dataframe>
+dfs[0]:150x6
+Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+1,5.1,3.5,1.4,0.2,Iris-setosa
+2,4.9,3.0,1.4,0.2,Iris-setosa
+3,4.7,3.2,1.3,0.2,Iris-setosa
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: create a pie chart for a species
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-05-18 16:41:06 [INFO] Executing Step 2: CodeGenerator
+2024-05-18 16:41:09 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-18 16:41:09 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+species_count = df['Species'].value_counts()
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Distribution of Species')
+
+# Display the plot
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "temp_plot.png"}
+            ```
+            
+2024-05-18 16:41:09 [INFO] Executing Step 3: CachePopulation
+2024-05-18 16:41:09 [INFO] Executing Step 4: CodeExecution
+2024-05-18 16:41:09 [INFO] Saving charts to C:\Users\chowd\OneDrive\Desktop\LangChain_LLm_Data\exports\charts\temp_chart.png
+2024-05-18 16:41:09 [INFO] 
+Code running:
+```
+df = dfs[0]
+species_count = df['Species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_count, labels=species_count.index, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')
+plt.title('Distribution of Species')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+        ```
+2024-05-18 16:43:00 [INFO] Executing Step 5: ResultValidation
+2024-05-18 16:43:00 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/chowd/OneDrive/Desktop/LangChain_LLm_Data/exports/charts/temp_chart.png'}
+2024-05-18 16:43:00 [INFO] Executed in: 113.71928310394287s
+2024-05-18 16:43:00 [INFO] Executing Step 6: ResultParsing
